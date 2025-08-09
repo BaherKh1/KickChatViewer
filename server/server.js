@@ -3,13 +3,6 @@ import express from "express";
 import { WebSocketServer } from "ws";
 import { createClient } from "@retconned/kick-js";
 import cors from "cors";
-import Kick from '@retconned/kick-js';
-
-const kick = new Kick();
-
-await kick.login({
-  type: 'guest'
-});
 
 const app = express();
 app.use(cors());
@@ -44,6 +37,7 @@ wss.on("connection", (ws) => {
       }
 
       // Create a new client for the channel
+      // readOnly: true will make the client only read messages from the chat, and disable all other authenticated actions.
       client = createClient(channelName, { logger: true, readOnly: true });
 
       client.on("ready", () => {
@@ -65,7 +59,6 @@ wss.on("connection", (ws) => {
         }));
       });
 
-      client.login();
     }
   });
 
