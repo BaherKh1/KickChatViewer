@@ -1,32 +1,36 @@
 {
-  "name": "kick-chat-viewer",
-  "version": "0.1.0",
+  "name": "kick-chat-viewer-electron",
+  "version": "1.0.0",
+  "description": "A desktop application for viewing Kick chat, with emote support.",
+  "main": "main.js", 
   "private": true,
-  "dependencies": {
-    "@retconned/kick-js": "^0.5.3",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.6.4",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "audit": "^0.0.6",
-    "fix": "^0.0.6",
-    "npm": "^11.5.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "author": "Your Name/Team",
+  "homepage": "./", 
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start-react": "react-scripts start",
+    "build-react": "react-scripts build",
+    "test-react": "react-scripts test",
+    "eject-react": "react-scripts eject",
+    "start": "npm run build-react && electron .", 
+    "electron-dev": "electron .", 
+    "pack": "electron-builder --dir", 
+    "dist": "electron-builder" 
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
+
+    "express": "^4.19.2",
+    "ws": "^8.18.0",
+    "@retconned/kick-js": "^0.5.3",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "electron": "^31.0.1", 
+    "electron-builder": "^24.13.3" 
   },
   "browserslist": {
     "production": [
@@ -39,5 +43,31 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "build": {
+    "appId": "com.yourcompany.kickchatviewer", 
+    "productName": "KickChatViewer", 
+    "files": [
+      "main.js",
+      "package.json",
+      "node_modules",
+      "build/**/*", 
+      "server/**/*" 
+    ],
+    "directories": {
+      "output": "release" 
+    },
+    "win": {
+      "target": "nsis", 
+      "icon": "public/icon.ico" 
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "public/icon.icns" 
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "public/icon.png" 
+    }
   }
 }

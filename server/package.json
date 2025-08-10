@@ -1,19 +1,17 @@
 {
-  "name": "server",
+  "name": "kick-chat-viewer-server",
   "version": "1.0.0",
+  "description": "Backend server for Kick Chat Viewer",
+  "type": "module", 
   "main": "server.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.18.0",
     "@retconned/kick-js": "^0.5.3",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "ws": "^8.18.3"
+    "cors": "^2.8.5"
   }
 }
